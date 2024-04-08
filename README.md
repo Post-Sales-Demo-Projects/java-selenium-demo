@@ -27,11 +27,15 @@ This repository uses the BrowserStack SDK to run tests on BrowserStack. Follow t
     <scope>compile</scope>
 </dependency>
 ```
+* Install dependencies `mvn compile`
 * Get browserstack-java-sdk .m2 repository path by searching for the <b><u>browserstack-java-sdk</u></b> jar file, right clicking on it and selecting Copy.
 
 ![Eclipse](https://i.imgur.com/9997ZCO.png)
 
-* Install dependencies `mvn compile`
+* Add the <b><u>browserstack-java-sdk</b></u> path you copied the Run Configuration by going to **Run -> Run Configurations**, clicking on the Arguments tab and adding the path in **VM Arguments**.
+
+![Eclipse](https://i.imgur.com/ZaBY1Ex.png)
 
 ## Notes
+
 * You can view your test results on the [BrowserStack Automate dashboard](https://www.browserstack.com/automate)
