@@ -1,0 +1,40 @@
+# BrowserStack access credentials. We are using Environment Variables to protect our sensitive login information
+userName: BROWSERSTACK_USERNAME
+accessKey: BROWSERSTACK_ACCESS_KEY
+
+# ======================
+# BrowserStack Reporting
+# ======================
+# The following capabilities are used to set up reporting on BrowserStack:
+# Set 'projectName' to the name of your project. Example, Marketing Website
+projectName: Post Sales Demos - GB
+# Set `buildName` as the name of the job / testsuite being run
+buildName: java-testng-demo-build
+# `buildIdentifier` is a unique id to differentiate every execution that gets appended to
+# buildName. Choose your buildIdentifier format from the available expressions:
+# ${BUILD_NUMBER} (Default): Generates an incremental counter with every execution
+# ${DATE_TIME}: Generates a Timestamp with every execution. Eg. 05-Nov-19:30
+# Read more about buildIdentifiers here -> https://www.browserstack.com/docs/automate/selenium/organize-tests
+buildIdentifier: '#${BUILD_NUMBER}' # Supports strings along with either/both ${expression}
+
+# The browsers and / or devices that you want to run your tests on.
+platforms:
+  - os: OS X
+    osVersion: Big Sur
+    browserName: Chrome
+    browserVersion: latest
+  - os: Windows
+    osVersion: 10
+    browserName: Edge
+    browserVersion: latest
+  - deviceName: Samsung Galaxy S23 Ultra
+    osVersion: 13.0
+    browserName: chrome
+
+# If you are testing against an internal website only accessible on your companies network, this needs to be true. It defaults to false
+browserstackLocal: true
+
+# Debugging and logging properties.
+debug: true
+networkLogs: true
+consoleLogs: info
