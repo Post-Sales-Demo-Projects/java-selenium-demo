@@ -29,7 +29,7 @@ This repository uses the BrowserStack SDK to run tests on BrowserStack. Follow t
 ```
 * Get browserstack-java-sdk .m2 repository path by searching for the <b><u>browserstack-java-sdk</u></b> jar file, right clicking on it and selecting Copy.
 
-![alt text](https://www.browserstack.com/docs/static/img/automate/selenium/getting-started-java/Eclipse-IntegrateYourTests/eclipse-m2path.webp)
+![Eclipse](https://i.imgur.com/9997ZCO.png)
 
 * Install dependencies `mvn compile`
 
