@@ -10,7 +10,6 @@
 - Replace YOUR_USERNAME and YOUR_ACCESS_KEY with your BrowserStack access credentials in browserstack.yml.
 - Install dependencies `mvn compile`
 - To run the test suite having cross-platform with parallelization, run `mvn test`
-- To run local tests, run `mvn test -P sample-local-test`
 
 Understand how many parallel sessions you need by using our [Parallel Test Calculator](https://www.browserstack.com/automate/parallel-calculator?ref=github)
 
@@ -28,71 +27,11 @@ This repository uses the BrowserStack SDK to run tests on BrowserStack. Follow t
     <scope>compile</scope>
 </dependency>
 ```
-* Modify your build plugin to run tests by adding argLine `-javaagent:${com.browserstack:browserstack-java-sdk:jar}` and `maven-dependency-plugin` for resolving dependencies in the profiles `sample-test` and `sample-local-test`.
-```
-            <plugin>
-               <artifactId>maven-dependency-plugin</artifactId>
-                 <executions>
-                   <execution>
-                     <id>getClasspathFilenames</id>
-                       <goals>
-                         <goal>properties</goal>
-                       </goals>
-                   </execution>
-                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M5</version>
-                <configuration>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>config/sample-local-test.testng.xml</suiteXmlFile>
-                    </suiteXmlFiles>
-                    <argLine>
-                        -javaagent:${com.browserstack:browserstack-java-sdk:jar}
-                    </argLine>
-                </configuration>
-            </plugin>
-```
+* Get browserstack-java-sdk .m2 repository path by searching for the <b><u>browserstack-java-sdk</u></b> jar file, right clicking on it and selecting Copy.
+
+![alt text](https://www.browserstack.com/docs/static/img/automate/selenium/getting-started-java/Eclipse-IntegrateYourTests/eclipse-m2path.webp)
+
 * Install dependencies `mvn compile`
-
-## Using Gradle
-
-### Prerequisites
-- If using Gradle, Java v9+ is required.
-
-### Run sample build
-
-- Clone the repository
-- Install dependencies `gradle build`
-- To run the test suite having cross-platform with parallelization, run `gradle sampleTest`
-- To run local tests, run `gradle sampleLocalTest`
-
-Understand how many parallel sessions you need by using our [Parallel Test Calculator](https://www.browserstack.com/automate/parallel-calculator?ref=github)
-
-### Integrate your test suite
-
-This repository uses the BrowserStack SDK to run tests on BrowserStack. Follow the steps below to install the SDK in your test suite and run tests on BrowserStack:
-
-* Following are the changes required in `gradle.build` -
-    * Add `compileOnly 'com.browserstack:browserstack-java-sdk:latest.release'` in dependencies
-    * Fetch Artifact Information and add `jvmArgs` property in tasks *SampleTest* and *SampleLocalTest* :
-  ```
-  def browserstackSDKArtifact = configurations.compileClasspath.resolvedConfiguration.resolvedArtifacts.find { it.name == 'browserstack-java-sdk' }
-  
-  task sampleTest(type: Test) {
-    useTestNG() {
-      dependsOn cleanTest
-      useDefaultListeners = true
-      suites "config/sample-test.testng.xml"
-      jvmArgs "-javaagent:${browserstackSDKArtifact.file}"
-    }
-  }
-  ```
-
-* Install dependencies `gradle build`
-
 
 ## Notes
 * You can view your test results on the [BrowserStack Automate dashboard](https://www.browserstack.com/automate)
